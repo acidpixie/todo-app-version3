@@ -114,13 +114,14 @@ class Task {
                 listElement.classList.toggle("completed");
             });
 
-            saveAndRender();
+            saveToLocalStorage();
+            setToDefault();
 
         } else if (userInputTask !== "" && isEdit) {
             editInputTask.innerHTML = userInputTask;
             editInputDate.innerHTML = userInputDate;
 
-            saveAndRender();
+            setToDefault();
 
         } else if (userInputTask === "") {
             emptyInput.innerHTML = "task input cannot be blank";
@@ -139,7 +140,7 @@ class Task {
                 taskList.removeChild(listItem);
             });
 
-            saveAndRender();
+            setToDefault();
             localStorage.removeItem("todo-app-storage-key");
         }
     }
@@ -159,7 +160,7 @@ class Task {
         const id = element.dataset.id;
         taskList.removeChild(element);
 
-        saveAndRender()
+        setToDefault()
     }
 
     // edit tasks 
@@ -181,11 +182,6 @@ class Task {
     } else {x.contentEditable = "true"; button.innerHTML = "EDIT";
 }
 
- }
-
- function saveAndRender() {
-    saveToLocalStorage()
-    setToDefault()
  }
 
 

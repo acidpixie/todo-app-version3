@@ -6,7 +6,6 @@ const dateToday = document.getElementById('title-date');
 dateToday.innerHTML = dateHeader;
 
 const LOCAL_STORAGE_APP_KEY = "todo-app-storage-key";
-let taskArray = JSON.parse(localStorage.getItem(LOCAL_STORAGE_APP_KEY)) || [];
 
 //input variables
 let taskInput = document.getElementById("input-task");
@@ -24,7 +23,7 @@ let editInputDate = "";
 let editId = "";
 let isEdit = false;
 
-// let taskArray = [];
+let taskArray = [];
 
 class Task {
     constructor(taskid, taskname, taskdate) {
@@ -114,13 +113,14 @@ class Task {
                 listElement.classList.toggle("completed");
             });
 
-            saveAndRender();
+            saveToLocalStorage();
+            setToDefault();
 
         } else if (userInputTask !== "" && isEdit) {
             editInputTask.innerHTML = userInputTask;
             editInputDate.innerHTML = userInputDate;
 
-            saveAndRender();
+            setToDefault();
 
         } else if (userInputTask === "") {
             emptyInput.innerHTML = "task input cannot be blank";
@@ -139,7 +139,7 @@ class Task {
                 taskList.removeChild(listItem);
             });
 
-            saveAndRender();
+            setToDefault();
             localStorage.removeItem("todo-app-storage-key");
         }
     }
@@ -159,7 +159,7 @@ class Task {
         const id = element.dataset.id;
         taskList.removeChild(element);
 
-        saveAndRender()
+        setToDefault()
     }
 
     // edit tasks 
@@ -183,11 +183,6 @@ class Task {
 
  }
 
- function saveAndRender() {
-    saveToLocalStorage()
-    setToDefault()
- }
-
 
      
     function setToDefault() {
@@ -197,16 +192,11 @@ class Task {
         editId = "";
     }
 
-   // function saveToLocalStorage() {
-   //     taskArray = JSON.stringify(taskArray);
-   //     localStorage.setItem(LOCAL_STORAGE_APP_KEY, taskArray);
-   //     taskArray = JSON.parse(localStorage.getItem(LOCAL_STORAGE_APP_KEY));
-   
-  
-   function saveToLocalStorage() {
-    localStorage.setItem(LOCAL_STORAGE_APP_KEY, JSON.stringify(taskArray))
-
-}
+    function saveToLocalStorage() {
+        taskArray = JSON.stringify(taskArray);
+        localStorage.setItem(LOCAL_STORAGE_APP_KEY, taskArray);
+        taskArray = JSON.parse(localStorage.getItem(LOCAL_STORAGE_APP_KEY));
+    }
 
 
 
