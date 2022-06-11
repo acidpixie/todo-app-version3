@@ -1,0 +1,62 @@
+/*color pallet
+#191A19 - black
+#1E5128 - dark green
+#4E9F3D - light green
+#D8E9A8 - whitish green gray
+#f5f5f5 - white smoke
+*/
+
+
+
+* {
+    box-sizing: border-box;
+    font-family: "poppins", sans-serif;
+    margin: 0;
+}
+
+body {
+    background-color: #D8E9A8;
+    color: #191A19;
+    max-width: 550px;
+    min-height: 100vh;
+    margin: auto;
+    box-shadow: 0 1px 10px 0px rgba(176, 173, 173, 0.467);
+    position: relative;
+}
+
+
+section {
+    padding: 3rem;
+}
+
+.heading {
+    padding-top: 2rem;
+    padding-bottom: 1rem;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+}
+
+input {
+    height: 30px;
+    border: none;
+    color: #191A19;
+    background-color: #f5f5f5;
+    border-radius: 25px;
+}
+
+
+li {
+    display: flex;
+    flex-direction: row;
+    padding-left: 0;
+    padding-top: 10px;
+    list-style: none;
+}
+
+ul {
+    background-color: #4E9F3D ;
+    border-radius: 25px;
+}

@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Todo Application</title>
+
+    <link rel="stylesheet" type="text/css" href="/css/stylesheet.css">
+    <script type="text/javascript" src="/js/script.js" defer></script>
+
+    <!--google fonts - poppins-->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@200;300&display=swap" rel="stylesheet">
+
+    
+</head>
+<body>
+
+    <section>
+        <header class="heading">
+        <h3>Hello XXX</h3>
+        </header>
+
+        <div>
+            <h4>Create a New Task</h4>
+            <form>
+                <label>Gotta add in a thing to do the thing...</label>
+                <input type="text" class="user-input" id="input-task" placeholder="e.g go to gym">
+                <p id="empty-input"></p>
+                <input type="datetime-local" class="user-date" id="input-date">
+                <button></button>
+                </label>
+            </form>
+       </div>
+    </section>
+
+    <section>
+        <div id="display-tasks" class="display">
+            <h3>My Tasks:</h3>
+            <ul class="task-item" id="task-list">
+                <li class="list-item" id="list-item" data-id="${newTask.taskId}">
+                    <div class="list-container">
+                        <span class="list-input" id="list-input">${newTask.taskname}</span>
+                        <span class="list-date-input" id="list-date-input">${newTask.taskdate}</span>
+                    </div>
+                    <div class="list-buttons">
+                        <button class="edit-item" id="edit-item">EDIT</button>
+                        <button class="delete-item" id="delete-item">DEL</button>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </section>
+
+    <button>Sort A-Z</button>
+    <button>Clear List</button>
+
+    
+</body>
+</html>

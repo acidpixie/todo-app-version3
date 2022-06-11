@@ -1,0 +1,24 @@
+/*color pallet
+#191A19 - black
+#1E5128 - dark green
+#4E9F3D - light green
+#D8E9A8 - whitish green gray
+*/
+
+
+
+* {
+    box-sizing: border-box;
+    font-family: "poppins", sans-serif;
+    margin: 0;
+}
+
+body {
+    background-color: #D8E9A8;
+    color: #1E5128;
+    max-width: 600px;
+    min-height: 100vh;
+    margin: auto;
+    box-shadow: 0 1px 10px 0px #7777;
+    position: relative;
+}
