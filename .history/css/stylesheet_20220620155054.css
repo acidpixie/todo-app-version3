@@ -114,9 +114,6 @@ li {
 
 }
 
-.user-button:hover {
-    background-color: #1E5128;
-}
 
 .add-new-task { 
     height: 50px;
@@ -131,11 +128,9 @@ li {
     cursor: pointer;
 }
 
-.add-new-task:hover {
-    background-color: #1E5128;
+.add-new-task :hover {
+    background-color: #9f573d;
 }
-
-
 
 .completed-task {
     text-decoration: line-through;

@@ -115,7 +115,7 @@ li {
 }
 
 .user-button:hover {
-    background-color: #1E5128;
+    background-color: #f5f5f5;
 }
 
 .add-new-task { 
@@ -132,7 +132,7 @@ li {
 }
 
 .add-new-task:hover {
-    background-color: #1E5128;
+    background-color: #77aa6d;
 }
 
 
