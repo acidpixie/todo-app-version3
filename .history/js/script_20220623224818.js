@@ -6,7 +6,9 @@ const dateToday = document.getElementById('title-date');
 dateToday.innerHTML = dateHeader;
 
 const LOCAL_STORAGE_APP_KEY = "todo-app-storage-key";
-//let taskArray = JSON.parse(localStorage.getItem(LOCAL_STORAGE_APP_KEY));
+let taskArray = JSON.parse(localStorage.getItem(LOCAL_STORAGE_APP_KEY)) || [];
+
+console.log(typeof taskArray)
 
 //input variables
 let taskInput = document.getElementById("input-task");
@@ -24,7 +26,7 @@ let editInputDate = "";
 let editId = "";
 let isEdit = false;
 
-let taskArray = JSON.parse(localStorage.getItem(LOCAL_STORAGE_APP_KEY)) || [];
+// let taskArray = [];
 
 class Task {
     constructor(taskid, taskname, taskdate) {
@@ -188,7 +190,6 @@ class Task {
     setToDefault()
  }
 
-
      
     function setToDefault() {
         taskInput.value = "";
@@ -207,16 +208,4 @@ class Task {
  //   localStorage.setItem(LOCAL_STORAGE_APP_KEY, JSON.stringify(taskArray))
 
 }
-
-
-
-
-
-
-
-
-
-
-
-
 

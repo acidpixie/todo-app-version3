@@ -24,7 +24,7 @@ let editInputDate = "";
 let editId = "";
 let isEdit = false;
 
-let taskArray = JSON.parse(localStorage.getItem(LOCAL_STORAGE_APP_KEY)) || [];
+let taskArray = [];
 
 class Task {
     constructor(taskid, taskname, taskdate) {

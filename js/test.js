@@ -1,20 +1,19 @@
-//today's date function
 let date = new Date();
 let dateHeader = date.toDateString();
 
 const dateToday = document.getElementById('title-date');
 dateToday.innerHTML = dateHeader;
 
-const LOCAL_STORAGE_APP_KEY = "todo-app-storage-key";
-//let taskArray = JSON.parse(localStorage.getItem(LOCAL_STORAGE_APP_KEY));
+const taskList = document.getElementById("task-list");
+
+const LOCAL_STORAGE_APP_KEY = 'local-storage-task-list'
+let myArray = JSON.parse(localStorage.getItem(LOCAL_STORAGE_APP_KEY)) || []
 
 //input variables
 let taskInput = document.getElementById("input-task");
 let taskInputDate = document.getElementById("input-date");
 const taskInputSubmit = document.getElementById("add-new-task-button");
 const emptyInput= document.getElementById("empty-input");
-
-const taskList = document.getElementById("task-list");
 
 const clearTaskList = document.getElementById("clear-button");
 const sortTaskList = document.getElementById("sort-button");
@@ -24,8 +23,9 @@ let editInputDate = "";
 let editId = "";
 let isEdit = false;
 
-let taskArray = JSON.parse(localStorage.getItem(LOCAL_STORAGE_APP_KEY)) || [];
 
+
+//create new task item 
 class Task {
     constructor(taskid, taskname, taskdate) {
         this._taskid = taskid;
@@ -60,11 +60,25 @@ class Task {
 
     //event listeners
 
-    taskInputSubmit.addEventListener("click", addTask);
     clearTaskList.addEventListener("click", clearTasks);
-    sortTaskList.addEventListener("click", sortTasks);
+    
+
+    function clearTasks() {
+        const allTasks = document.querySelectorAll(".list-item");
+
+        if (allTasks.length > 0) {
+            allTasks.forEach(function (listItem) {
+                taskList.removeChild(listItem);
+            });
+
+            saveAndRender();
+            localStorage.removeItem("local-storage-task-list");
+        }
 
     //function to add in a new task
+
+    taskInputSubmit.addEventListener("click", addTask);
+
 
     function addTask(e) {
         e.preventDefault();
@@ -77,9 +91,9 @@ class Task {
 
         emptyInput.innerHTML= "";
 
-        if (userInputTask !== "" && !isEdit) {
+        if (userInputTask !== "") {
             let newTask = new Task(newTaskId, userInputTask, userInputDate);
-            taskArray.push(newTask);
+            myArray.push(newTask);
 
             const listElement = document.createElement("li");
             listElement.classList.add("list-item");
@@ -112,39 +126,31 @@ class Task {
             taskContent.addEventListener("dblclick", function(){
                 taskContent.classList.toggle("completed-task");
                 listElement.classList.toggle("completed");
-            });
+            })
 
-            saveAndRender();
+           // saveAndRender()
 
         } else if (userInputTask !== "" && isEdit) {
             editInputTask.innerHTML = userInputTask;
             editInputDate.innerHTML = userInputDate;
 
-            saveAndRender();
+          //  saveAndRender();
 
         } else if (userInputTask === "") {
             emptyInput.innerHTML = "task input cannot be blank";
         } else {
             emptyInput.innerHTML = "";
         }
-    }
+
+      //  saveAndRender()
 
     // clear tasks
 
-    function clearTasks() {
-        const allTasks = document.querySelectorAll(".list-item");
-
-        if (allTasks.length > 0) {
-            allTasks.forEach(function (listItem) {
-                taskList.removeChild(listItem);
-            });
-
-            saveAndRender();
-            localStorage.removeItem("todo-app-storage-key");
-        }
     }
 
     //sort tasks a-z
+
+    sortTaskList.addEventListener("click", sortTasks);
 
     function sortTasks() {
         [...taskList.children]
@@ -162,61 +168,24 @@ class Task {
         saveAndRender()
     }
 
-    // edit tasks 
-
- //  function editTask(event) {
- //   let element = event.currentTarget.parentElement.parentElement;
- //   const attrE = document.createAttribute("contenteditable");
- //   attrE.value = true;
- //   element.setAttributeNode(attrE);
-
- //   editId = element.dataset.id;
- //   isEdit = true;
-
-
- function editTask(button) {
-    let x = document.getElementById("list-input");
-    if (x.contentEditable == "true") {
-        x.contentEditable = "false"; button.innerHTML = "SAVE";
-    } else {x.contentEditable = "true"; button.innerHTML = "EDIT";
-}
-
- }
-
- function saveAndRender() {
-    saveToLocalStorage()
-    setToDefault()
- }
-
-
-     
-    function setToDefault() {
-        taskInput.value = "";
-        taskInputDate.value = "";
-        isEdit = false;
-        editId = "";
+    function editTask(button) {
+        let x = document.getElementById("list-input");
+        if (x.contentEditable == "true") {
+            x.contentEditable = "false"; button.innerHTML = "SAVE";
+        } else {x.contentEditable = "true"; button.innerHTML = "EDIT";
     }
 
- function saveToLocalStorage() {
-   taskArray = JSON.stringify(taskArray);
-   localStorage.setItem(LOCAL_STORAGE_APP_KEY, taskArray);
-   taskArray = JSON.parse(localStorage.getItem(LOCAL_STORAGE_APP_KEY));
-   
-  
- //  function saveToLocalStorage() {
- //   localStorage.setItem(LOCAL_STORAGE_APP_KEY, JSON.stringify(taskArray))
-
 }
 
 
+function saveAndRender() {
+    save()
+    addTask() }
 
 
+function save() {
+    localStorage.setItem(LOCAL_STORAGE_APP_KEY, JSON.stringify(myArray))
+}
 
 
-
-
-
-
-
-
-
+}
