@@ -184,6 +184,7 @@ class Task {
  }
 
  function saveAndRender() {
+    load()
     saveToLocalStorage()
     setToDefault()
  }
@@ -205,5 +206,13 @@ class Task {
  //  function saveToLocalStorage() {
  //   localStorage.setItem(LOCAL_STORAGE_APP_KEY, JSON.stringify(taskArray))
 
+}
+
+
+
+function load() {
+    taskArray = localStorage.getItem('LOCAL_STORAGE_APP_KEY');
+    if (LOCAL_STORAGE_APP_KEY == null)
+    taskArray = [];
 }
 

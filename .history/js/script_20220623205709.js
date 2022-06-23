@@ -188,6 +188,7 @@ class Task {
     setToDefault()
  }
 
+
      
     function setToDefault() {
         taskInput.value = "";
@@ -206,4 +207,5 @@ class Task {
  //   localStorage.setItem(LOCAL_STORAGE_APP_KEY, JSON.stringify(taskArray))
 
 }
+
 

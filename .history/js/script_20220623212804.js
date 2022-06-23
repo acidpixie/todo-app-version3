@@ -184,6 +184,7 @@ class Task {
  }
 
  function saveAndRender() {
+    load()
     saveToLocalStorage()
     setToDefault()
  }
@@ -207,3 +208,19 @@ class Task {
 
 }
 
+
+
+function load() {
+    taskArray = localStorage.getItem('LOCAL_STORAGE_APP_KEY');
+    if (LOCAL_STORAGE_APP_KEY == null)
+    taskArray = [];
+}
+
+function renderlist() {
+    taskArray.forEach(task => renderTask(taskname, taskdate))
+}
+
+function renderTask(taskInput, taskInputDate){
+
+
+}

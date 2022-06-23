@@ -77,7 +77,7 @@ class Task {
 
         emptyInput.innerHTML= "";
 
-        if (userInputTask !== "" && !isEdit) {
+        if (userInputTask !== "") {
             let newTask = new Task(newTaskId, userInputTask, userInputDate);
             taskArray.push(newTask);
 
@@ -95,7 +95,7 @@ class Task {
             </div>
             <div class="list-buttons">
             <button class="edit-item" id="edit-item"></button>
-            <img src="images/del.png" class="delete-item" id="delete-item"></img>
+            <img src="/images/del.png" class="delete-item" id="delete-item"></img>
             </div>
             `;
 
@@ -108,6 +108,9 @@ class Task {
            editButton.addEventListener("click", editTask);
 
             taskList.appendChild(listElement);
+
+            taskArray.push({Task
+            })
 
             taskContent.addEventListener("dblclick", function(){
                 taskContent.classList.toggle("completed-task");
@@ -188,6 +191,7 @@ class Task {
     setToDefault()
  }
 
+
      
     function setToDefault() {
         taskInput.value = "";
@@ -205,5 +209,15 @@ class Task {
  //  function saveToLocalStorage() {
  //   localStorage.setItem(LOCAL_STORAGE_APP_KEY, JSON.stringify(taskArray))
 
+
+
+
+
 }
+
+
+
+
+
+
 

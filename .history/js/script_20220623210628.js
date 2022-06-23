@@ -197,13 +197,17 @@ class Task {
     }
 
  function saveToLocalStorage() {
-   taskArray = JSON.stringify(taskArray);
-   localStorage.setItem(LOCAL_STORAGE_APP_KEY, taskArray);
-   taskArray = JSON.parse(localStorage.getItem(LOCAL_STORAGE_APP_KEY));
+   taskArrayData = JSON.stringify(taskArray);
+   localStorage.setItem(LOCAL_STORAGE_APP_KEY, taskArrayData);
+   taskArrayData = JSON.parse(localStorage.getItem(LOCAL_STORAGE_APP_KEY));
    
   
  //  function saveToLocalStorage() {
  //   localStorage.setItem(LOCAL_STORAGE_APP_KEY, JSON.stringify(taskArray))
 
 }
+
+let todoList = "testStorage"
+
+localStorage.setItem("todoList", todoList)
 

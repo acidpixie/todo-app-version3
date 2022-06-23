@@ -6,7 +6,7 @@ const dateToday = document.getElementById('title-date');
 dateToday.innerHTML = dateHeader;
 
 const LOCAL_STORAGE_APP_KEY = "todo-app-storage-key";
-let taskArray = JSON.parse(localStorage.getItem(LOCAL_STORAGE_APP_KEY)) || [];
+let taskArray = JSON.parse(localStorage.getItem(LOCAL_STORAGE_APP_KEY));
 
 //input variables
 let taskInput = document.getElementById("input-task");
@@ -77,7 +77,7 @@ class Task {
 
         emptyInput.innerHTML= "";
 
-        if (userInputTask !== "" && !isEdit) {
+        if (userInputTask !== "") {
             let newTask = new Task(newTaskId, userInputTask, userInputDate);
             taskArray.push(newTask);
 
@@ -95,7 +95,7 @@ class Task {
             </div>
             <div class="list-buttons">
             <button class="edit-item" id="edit-item"></button>
-            <img src="images/del.png" class="delete-item" id="delete-item"></img>
+            <img src="/images/del.png" class="delete-item" id="delete-item"></img>
             </div>
             `;
 
@@ -109,6 +109,7 @@ class Task {
 
             taskList.appendChild(listElement);
 
+
             taskContent.addEventListener("dblclick", function(){
                 taskContent.classList.toggle("completed-task");
                 listElement.classList.toggle("completed");
@@ -116,7 +117,7 @@ class Task {
 
             saveAndRender();
 
-        } else if (userInputTask !== "" && isEdit) {
+        } else if (userInputTask !== "") {
             editInputTask.innerHTML = userInputTask;
             editInputDate.innerHTML = userInputDate;
 
@@ -188,6 +189,7 @@ class Task {
     setToDefault()
  }
 
+
      
     function setToDefault() {
         taskInput.value = "";
@@ -205,5 +207,15 @@ class Task {
  //  function saveToLocalStorage() {
  //   localStorage.setItem(LOCAL_STORAGE_APP_KEY, JSON.stringify(taskArray))
 
+
+
+
+
 }
+
+
+
+
+
+
 

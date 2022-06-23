@@ -184,6 +184,7 @@ class Task {
  }
 
  function saveAndRender() {
+    load()
     saveToLocalStorage()
     setToDefault()
  }

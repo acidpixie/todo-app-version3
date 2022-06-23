@@ -95,7 +95,7 @@ class Task {
             </div>
             <div class="list-buttons">
             <button class="edit-item" id="edit-item"></button>
-            <img src="images/del.png" class="delete-item" id="delete-item"></img>
+            <img src="/images/del.png" class="delete-item" id="delete-item"></img>
             </div>
             `;
 
@@ -188,6 +188,7 @@ class Task {
     setToDefault()
  }
 
+
      
     function setToDefault() {
         taskInput.value = "";
@@ -206,4 +207,10 @@ class Task {
  //   localStorage.setItem(LOCAL_STORAGE_APP_KEY, JSON.stringify(taskArray))
 
 }
+
+
+
+
+
+
 
