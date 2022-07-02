@@ -7,8 +7,8 @@
     <title>Todo Application</title>
 
     <link rel="stylesheet" type="text/css" href="css/stylesheet.css">
-    <script type="text/javascript" src="js/script.js" defer>
-
+   <!-- <script type="text/javascript" src="js/script.js" defer></script> -->
+    <script type="text/javascript" src="js/test.js" defer></script>
 
     <!--google fonts - poppins-->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -31,7 +31,8 @@
                 <input type="text" class="user-input" id="input-task" placeholder="e.g go to gym">
                 <p id="empty-input" class="empty-input"></p>
                 <input type="date" class="user-date" id="input-date">
-                <img src="images/add.png" type="submit" class="add-new-task" id="add-new-task-button" alt="plus icon"></img>
+                <img src="images/add.png" type="submit" class="add-new-task" id="add-new-task-button" alt="plus icon" onclick="addTask()"></img>
+                </label>
             </form>
        </div>
     </section>
@@ -41,7 +42,7 @@
             <h3>Things to do...</h3>
             <span class="title-date" id="title-date"></span>
             <ul class="task-item" id="task-list">
-             <!-- <li class="list-item" id="list-item" data-id="${newTask.taskId}">
+              <!--  <li class="list-item" id="list-item" data-id="${newTask.taskId}">
                     
                     <div class="list-container" id="lists-container">
                         <span class="list-input" id="list-input" contenteditable="true">${newTask.taskname}</span>

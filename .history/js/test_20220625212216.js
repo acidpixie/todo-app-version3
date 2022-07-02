@@ -61,12 +61,11 @@ class Task {
       let userInputTask = userInput.charAt(0).toUpperCase() + userInput.slice(1);
 
       myTasks.push(new Task(newTaskId, userInputTask, userInputDate));
-      localStorage.setItem("myStorage", JSON.stringify(myTasks))
       display();
 
       emptyInput.innerHTML= "";
 
-        if (userInputTask !== "") {
+        if (userInputTask !== "" && !isEdit) {
             let newTask = new Task(newTaskId, userInputTask, userInputDate);
             taskArray.push(newTask);
 
@@ -91,9 +90,10 @@ class Task {
             //variables and event listeners for buttons created in new li element
             const taskContent = listElement.querySelector(".list-container");
             const deleteButton = listElement.querySelector(".delete-item");
-                        
-            deleteButton.addEventListener("click", deleteTask);
-           
+            const editButton = listElement.querySelector(".edit-item");
+            
+           deleteButton.addEventListener("click", deleteTask);
+           editButton.addEventListener("click", editTask);
 
             taskList.appendChild(listElement);
 
@@ -106,6 +106,13 @@ class Task {
             display()
 
 
+        } else if (userInputTask !== "" && isEdit) {
+            editInputTask.innerHTML = userInputTask;
+            editInputDate.innerHTML = userInputDate;
+
+            checkLocalStorage()
+            display()
+
         } else if (userInputTask === "") {
             emptyInput.innerHTML = "task input cannot be blank";
         } else {
@@ -115,8 +122,7 @@ class Task {
     }
 
     function display() {
-      for(let i = 0; i < myTasks.length; i++) {
-        console.log(myTasks[i].taskid);
+      for(let i=0; i < myTasks.length; i++) {
         console.log(myTasks[i].taskname);
         console.log(myTasks[i].taskdate);
       }

@@ -6,7 +6,7 @@ const dateToday = document.getElementById('title-date');
 dateToday.innerHTML = dateHeader;
 
 const LOCAL_STORAGE_APP_KEY = "todo-app-storage-key";
-let taskArray = []
+// let taskArray = []
 
 //input variables
 let taskInput = document.getElementById("input-task");
@@ -23,6 +23,20 @@ let editInputTask = "";
 let editInputDate = "";
 let editId = "";
 let isEdit = false;
+
+function saveToLocalStorage(myTasks) {
+    let taskArray;
+    if (localStorage.getItem('taskArray') === null){
+        taskArray = [];
+    }else{
+        taskArray = JSON.parse(localStorage.getItem('taskArray'));
+
+    }
+
+    taskArray.push(myTasks);
+    localStorage.setItem('taskArray', JSON.stringify(taskArray));
+
+ }
 
  // let taskArray = JSON.parse(localStorage.getItem(LOCAL_STORAGE_APP_KEY)) || []; cm
 // JSON.stringify(taskArray) cm
@@ -116,7 +130,6 @@ class Task {
             });
 
             saveAndRender();
-            saveToLocalStorage()
 
         } else if (userInputTask !== "" && isEdit) {
             editInputTask.innerHTML = userInputTask;
@@ -142,7 +155,8 @@ class Task {
             });
 
             saveAndRender();
-            localStorage.removeItem("todo-app-storage-key"); 
+           // localStorage.removeItem("todo-app-storage-key"); cm
+           localStorage.removeItem("userData");
         }
     }
 
@@ -212,19 +226,7 @@ class Task {
  //  function saveToLocalStorage() {
  //   localStorage.setItem(LOCAL_STORAGE_APP_KEY, JSON.stringify(taskArray))
 
- function saveToLocalStorage(LOCAL_STORAGE_APP_KEY) {
-    let taskArray;
-    if (localStorage.getItem('taskArray') === ""){
-        taskArray = [];
-    }else{
-        taskArray = JSON.parse(localStorage.getItem('taskArray'));
 
-    }
-
-    taskArray.push(LOCAL_STORAGE_APP_KEY);
-    localStorage.setItem('taskArray', JSON.stringify(taskArray));
-
- }
 
  //function saveToLocalStorage() {
  //myData = JSON.stringify(taskArray);

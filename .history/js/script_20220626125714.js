@@ -59,9 +59,8 @@ class Task {
       }
     }
 
-    //event listeners
+   
 
-    taskInputSubmit.addEventListener("click", addTask);
     clearTaskList.addEventListener("click", clearTasks);
     sortTaskList.addEventListener("click", sortTasks);
 
@@ -69,6 +68,8 @@ class Task {
 
     function addTask(e) {
         e.preventDefault();
+        taskInputSubmit.addEventListener("click", addTask);
+        alert(clicked)
 
         let userInput = document.getElementById("input-task").value;
         let userInputDate = document.getElementById("input-date").value;

@@ -116,7 +116,6 @@ class Task {
             });
 
             saveAndRender();
-            saveToLocalStorage()
 
         } else if (userInputTask !== "" && isEdit) {
             editInputTask.innerHTML = userInputTask;
@@ -142,7 +141,7 @@ class Task {
             });
 
             saveAndRender();
-            localStorage.removeItem("todo-app-storage-key"); 
+            localStorage.removeItem("todo-app-storage-key");
         }
     }
 
@@ -181,8 +180,6 @@ class Task {
     if (x.contentEditable == "true") {
         x.contentEditable = "false"; button.innerHTML = "SAVE";
     } else {x.contentEditable = "true"; button.innerHTML = "EDIT";
-
-    saveAndRender();
 }
 
  }
@@ -201,9 +198,6 @@ class Task {
         editId = "";
     }
 
-
-
-
  // function saveToLocalStorage() { cm
  //  localStorage.setItem(LOCAL_STORAGE_APP_KEY, JSON.stringify(taskArray)); cm
  //  taskArray = JSON.parse(localStorage.getItem(LOCAL_STORAGE_APP_KEY));
@@ -212,27 +206,15 @@ class Task {
  //  function saveToLocalStorage() {
  //   localStorage.setItem(LOCAL_STORAGE_APP_KEY, JSON.stringify(taskArray))
 
- function saveToLocalStorage(LOCAL_STORAGE_APP_KEY) {
-    let taskArray;
-    if (localStorage.getItem('taskArray') === ""){
-        taskArray = [];
-    }else{
-        taskArray = JSON.parse(localStorage.getItem('taskArray'));
 
-    }
+function saveToLocalStorage() {
+myData = JSON.stringify(taskArray);
+localStorage.setItem("userData", myData);
 
-    taskArray.push(LOCAL_STORAGE_APP_KEY);
-    localStorage.setItem('taskArray', JSON.stringify(taskArray));
+}
 
- }
+myTaskData = localStorage.getItem("userData");
 
- //function saveToLocalStorage() {
- //myData = JSON.stringify(taskArray);
-//localStorage.setItem("userData", myData);
-//}
-
-// taskData = localStorage.getItem("userData");
-//document.querySelector(".list-item").innerHTML = taskData._taskname
 
 
 

@@ -62,6 +62,7 @@ class Task {
     //event listeners
 
     taskInputSubmit.addEventListener("click", addTask);
+    alert(clicked)
     clearTaskList.addEventListener("click", clearTasks);
     sortTaskList.addEventListener("click", sortTasks);
 

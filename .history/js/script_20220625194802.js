@@ -116,7 +116,7 @@ class Task {
             });
 
             saveAndRender();
-            saveToLocalStorage()
+            saveToLocalStorage(userInput.value)
 
         } else if (userInputTask !== "" && isEdit) {
             editInputTask.innerHTML = userInputTask;
@@ -142,7 +142,8 @@ class Task {
             });
 
             saveAndRender();
-            localStorage.removeItem("todo-app-storage-key"); 
+           // localStorage.removeItem("todo-app-storage-key"); cm
+           localStorage.removeItem("userData");
         }
     }
 
