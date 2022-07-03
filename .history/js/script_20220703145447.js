@@ -19,10 +19,10 @@ const taskList = document.getElementById("task-list");
 const clearTaskList = document.getElementById("clear-button");
 const sortTaskList = document.getElementById("sort-button");
 
-let editInputTask = "";
+/*let editInputTask = "";
 let editInputDate = "";
 let editId = "";
-let isEdit = false;
+let isEdit = false;*/
 
 let taskArray;
 
@@ -164,7 +164,7 @@ function clearTasks() {
         }*/
     saveAndRender();
     localStorage.clear();
-    clearTaskList.removeEventListener('click');
+    clearTaskList.removeEventListener('click', () => { })
 
 }
 
@@ -179,14 +179,14 @@ function sortTasks() {
 //delete tasks
 
 function deleteTask() {
-    const deleteButtons = document.querySelectorAll('.delete-item');
+    const deleteButtons = doucment.querySelectorAll('.delete-item');
     deleteButtons.forEach((button) => {
-        button.removeEventListener('click', () => { });
+        button.removeEventListner('click', () => { });
     });
     deleteButtons.forEach((button, i) => {
         button.addEventListener('click', () => {
-          //  console.log('click', i);
-          //  console.log(taskArray.from(document.querySelectorAll('li'))[i]);
+            console.log('click', i);
+            console.log(taskArray.from(document.querySelectorAll('li'))[i]);
             taskArray.splice(i,1);
 
             saveToLocalStorage();

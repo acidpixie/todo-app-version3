@@ -164,8 +164,6 @@ function clearTasks() {
         }*/
     saveAndRender();
     localStorage.clear();
-    clearTaskList.removeEventListener('click');
-
 }
 
 //sort tasks a-z
@@ -178,24 +176,13 @@ function sortTasks() {
 
 //delete tasks
 
-function deleteTask() {
-    const deleteButtons = document.querySelectorAll('.delete-item');
-    deleteButtons.forEach((button) => {
-        button.removeEventListener('click', () => { });
-    });
-    deleteButtons.forEach((button, i) => {
-        button.addEventListener('click', () => {
-          //  console.log('click', i);
-          //  console.log(taskArray.from(document.querySelectorAll('li'))[i]);
-            taskArray.splice(i,1);
+function deleteTask(event) {
+    let element = event.currentTarget.parentElement.parentElement;
+    const id = element.dataset.id;
+    taskList.removeChild(element);
 
-            saveToLocalStorage();
-            display();
-            check();
-        });
-    })
+    saveAndRender()
 }
-
 
 // edit tasks 
 
@@ -225,7 +212,6 @@ function saveAndRender() {
 }
 
 
-
 function setToDefault() {
     taskInput.value = "";
     taskInputDate.value = "";
@@ -243,4 +229,38 @@ function saveToLocalStorage() {
     //   localStorage.setItem(LOCAL_STORAGE_APP_KEY, JSON.stringify(taskArray))
 
 }
+
+function deleteTask(event) {
+    let element = event.currentTarget.parentElement.parentElement;
+    const id = element.dataset.id;
+    taskList.removeChild(element);
+
+    console.log("HERE");
+    console.log(event.currentTarget.parentElement.parentElement);
+    //let theTex = get the text "Gym" 
+    //let theDate = and the date
+
+    for (let i = 0; taskArray.length; i++) {
+        if (taskArray[i].gettask === theText && taskArray[i].gettask === theDate) {
+            taskArray.splice(i, 1);
+            //save to local storage again
+            //check();
+        }
+        //}
+
+        saveAndRender()
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
 

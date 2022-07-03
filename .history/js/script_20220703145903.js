@@ -164,7 +164,7 @@ function clearTasks() {
         }*/
     saveAndRender();
     localStorage.clear();
-    clearTaskList.removeEventListener('click');
+    clearTaskList.removeEventListener('click', () => { })
 
 }
 
@@ -185,8 +185,8 @@ function deleteTask() {
     });
     deleteButtons.forEach((button, i) => {
         button.addEventListener('click', () => {
-          //  console.log('click', i);
-          //  console.log(taskArray.from(document.querySelectorAll('li'))[i]);
+            console.log('click', i);
+            console.log(taskArray.from(document.querySelectorAll('li'))[i]);
             taskArray.splice(i,1);
 
             saveToLocalStorage();

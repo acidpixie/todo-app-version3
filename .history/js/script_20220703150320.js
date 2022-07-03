@@ -164,7 +164,7 @@ function clearTasks() {
         }*/
     saveAndRender();
     localStorage.clear();
-    clearTaskList.removeEventListener('click');
+    clearTaskList.removeEventListener('click', () => { })
 
 }
 

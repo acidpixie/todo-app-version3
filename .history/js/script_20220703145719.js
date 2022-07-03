@@ -164,7 +164,7 @@ function clearTasks() {
         }*/
     saveAndRender();
     localStorage.clear();
-    clearTaskList.removeEventListener('click');
+    clearTaskList.removeEventListener('click', () => { })
 
 }
 
@@ -179,14 +179,14 @@ function sortTasks() {
 //delete tasks
 
 function deleteTask() {
-    const deleteButtons = document.querySelectorAll('.delete-item');
+    const deleteButtons = doucment.querySelectorAll('.delete-item');
     deleteButtons.forEach((button) => {
-        button.removeEventListener('click', () => { });
+        button.removeEventListner('click', () => { });
     });
     deleteButtons.forEach((button, i) => {
         button.addEventListener('click', () => {
-          //  console.log('click', i);
-          //  console.log(taskArray.from(document.querySelectorAll('li'))[i]);
+            console.log('click', i);
+            console.log(taskArray.from(document.querySelectorAll('li'))[i]);
             taskArray.splice(i,1);
 
             saveToLocalStorage();
